@@ -1,0 +1,360 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<HEAD>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+
+  <!--<link href="bootstrap.min.css" rel="stylesheet" >-->
+
+  <style>
+
+  body{overflow:scroll;}
+
+  #jumb{
+  
+  background-color:#7FFFD4;
+  color:#fff;
+margin-top: 30px;}
+
+  #Type{
+  margin-left:15%;}
+
+  .img{
+  width:200px;
+  height:200px;
+  }
+
+  .caption{
+  text-align:center;}
+
+  .navbar{
+	background-color: #0d192d;}
+
+  .new_category_name{
+    margin-right:1000px;
+  }
+
+  :required  {
+background: url(https://cdn0.iconfinder.com/data/icons/fugue/icon/asterisk-small.png) no-repeat;
+background-position:right top;
+}
+
+
+  </style>
+
+</HEAD>
+
+<BODY>
+
+
+
+
+
+
+  <nav class="navbar navbar-default navbar-fixed-top navbar-expand-md">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Bakery Shop</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+  <li ><a href="#">Home <span class="sr-only">(current)</span></a></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a class="nav-link" href="#" data-toggle="modal" data-target="#cart">Cart</a></li>
+        <li><a class="nav-link" href="#" data-toggle="modal" data-target="#addCategory">Add Category</a></li>
+
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<!-- Modal -->
+<div class="modal fade" id="addCategory" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close"
+                   data-dismiss="modal">
+                       <span aria-hidden="true">&times;</span>
+                       <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    Add New Category
+                </h4>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <form role="form">
+                  <div class="form-group">
+                    <label for="new_category_name" class="form-control-label">Category Name: </label>
+                    <input type="text" required="required" class="form-control"
+                      id="new_category_name" placeholder="Enter category"/>
+                  </div>
+            </form>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="checkform();">Add new category!</button>
+            </div>
+        </div>
+      </div>
+    </div>
+
+<!--Modal : CART -->
+<div class="modal fade" id="cart" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close"
+                   data-dismiss="modal">
+                       <span aria-hidden="true">&times;</span>
+                       <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    Cart
+                </h4>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+              <table id="cart_table" class="table table-bordered">
+                       <thead>
+                         <tr>
+                           <td>Name</td>
+                        
+							<td>Price</td>
+                           <td>Quantity</td>
+                        </tr>
+                       </thead>
+                       <tbody>
+                        <div id="Bakery"></div>
+                       </tbody>
+                     </table>
+                     <div class="row" id="bill"></div>
+
+
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="">Checkout</button>
+            </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+  <!--Jumbo-->
+
+
+
+
+
+<div class="jumbotron text-center" id="jumb">
+<h1> Boulangerie</h1>
+</div>
+
+  <!--Categories-->
+  <ul class="nav nav-tabs nav-fill nav-justified " role="tablist" id="category-tab">
+  <li class="nav-item">
+    <a class="nav-link active" data-toggle="tab" href="#home" role="tab">Cookies</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#cakes" role="tab" onclick="fiction()">cakes</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#Chocolates" role="tab">Chocolates</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#Puddings" role="tab">Puddings</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#Pies" role="tab">Pies</a>
+  </li>
+  </ul>
+
+
+
+
+  <div class="tab-content">
+  <div class="tab-pane active" id="home" role="tabpanel">Cookies
+
+  <div class="row">
+  <div class="col-xs-6 col-md-4">
+    <a href="#" class="thumbnail">
+      <img src="" alt="">
+    </a>
+  </div>
+  <div class="col-xs-6 col-md-4">
+    <a href="#" class="thumbnail">
+      <img src="..." alt="...">
+    </a>
+  </div>
+  <div class="col-xs-6 col-md-4">
+    <a href="#" class="thumbnail">
+      <img src="..." alt="...">
+    </a>
+  </div>
+
+</div>
+<div class="row">
+
+ <div class="col-xs-6 col-md-4">
+    <a href="#" class="thumbnail">
+      <img src="..." alt="...">
+    </a>
+  </div>
+  <div class="col-xs-6 col-md-4">
+    <a href="#" class="thumbnail">
+      <img src="..." alt="...">
+    </a>
+  </div>
+
+</div>
+
+
+  </div>
+
+  <!--Classic-->
+  <div class="tab-pane" id="cakes" role="tabpanel">
+
+  <div class="row">
+
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img id="cake" src="cake.jpg" alt="Img not found" class="logo">
+	<div class="caption">
+        <h3 id="cakename"></h3>
+        
+        <p>
+      <button type="button" id="cakeprice" class="btn btn-success">Price: </button>
+			<button type="button" id="cakebutton" class="btn btn-primary cart_add" value="1">Add to Cart</button>
+		</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img id="cake1" src="cake1.jpg" alt="Img not found" class="logo">
+	<div class="caption">
+        <h3 id="cake1name"></h3>
+        
+        <p>
+          <button type="button" id="cake1price" class="btn btn-success">Price: </button>
+    			<button type="button" id="cakebutton" class="btn btn-primary cart_add" value="2">Add to Cart</button>
+		</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img id="cake3" src="cake3.jpg" alt="Img not found" class="logo">
+	<div class="caption">
+        <h3 id="cake3name"></h3>
+        
+        <p>
+          <button type="button" id="cake3price" class="btn btn-success">Price: </button>
+    			<button type="button" id="cake3button" class="btn btn-primary cart_add" value="3">Add to Cart</button>
+
+		</p>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div class="row">
+
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <img id="cake2" src="cake2.jpg" alt="Img not found" class="logo">
+  	<div class="caption">
+          <h3 id="cake2name"></h3>
+          
+          <p>
+            <button type="button" id="cake2price" class="btn btn-success">Price: </button>
+      			<button type="button" id="cake2button" class="btn btn-primary cart_add" value="4">Add to Cart</button>
+  		</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <img id="cake4" src="cake4.jpg" alt="Img not found" class="logo">
+  	<div class="caption">
+          <h3 id="cake4name"></h3>
+          
+      <p>
+        <button type="button" id="cake4price" class="btn btn-success">Price: </button>
+  			<button type="button" id="cake4button" class="btn btn-primary cart_add" value="5">Add to Cart</button>
+  		</p>
+        </div>
+      </div>
+    </div>
+
+
+    </div>
+
+  </div>
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ <footer>
+
+         <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="bootstrap.min.js"></script>
+  <script src="proper.min.js"></script>
+  <script src="jquery-3.2.1.slim.min.js"></script>
+<script src="bakery.js"> </script>
+  <script src="main.js">	</script>
+
+
+</footer>
+</BODY>
+</HTML>
